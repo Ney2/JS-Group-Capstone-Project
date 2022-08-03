@@ -1,7 +1,4 @@
-import "./style.css";
-const apiKey = '54a6527497256dd9bae8275602a3260a';
-
-window.addEventListener('load', () => {
-
-
-});
+/* eslint-disable prefer-const */
+/* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+import './style.css';
