@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.searchContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.searchBar {
+    margin-top: 10%;
+}
+
+.searchContainer h2 {
+    border: 1px solid black;
+    border-radius: 10%;
+}
