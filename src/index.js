@@ -6,18 +6,23 @@ import displayLocalWeather from './modules/displayData.js';
 import otherCitiesWeather from './modules/citiesWeather.js';
 
 const cities = ['Madrid', 'Addis Ababa', 'Delhi', 'Washington', 'London'];
-const search = document.getElementById('searchIcon');
+const search = document.querySelector('#search');
 const apiKey = '54a6527497256dd9bae8275602a3260a';
-const parent = document.getElementById('container');
+const parent = document.getElementById('myModal');
 const likeimage = document.getElementById('likeimg');
+const span = document.getElementsByClassName('close')[0];
+// eslint-disable-next-line no-var
+
 window.addEventListener('load', () => {
   displayLocalWeather();
   cities.forEach((cityName) => {
     otherCitiesWeather(cityName);
   });
-  const displayCityWeather = async (city) => {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    await fetch(apiUrl)
+  search.addEventListener('click', (e) => {
+    const cityName = document.getElementById('cityname').value;
+    parent.style.display = 'block';
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         const { temp } = data.main;
@@ -25,30 +30,32 @@ window.addEventListener('load', () => {
         const { description, icon } = data.weather[0];
         const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
         // const fahrenheit = (temp * 9) / 5 + 32;
-        const container = document.createElement('div');
-        container.classList.add('modal ');
-        container.setAttribute('id', 'myModal');
-        container.setAttribute('role', 'dialog');
-        container.innerHTML = `<div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="padding:35px 50px;">
-                <span class="info">${place}</span>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-             </div>
-             <div class="modal-body" style="padding:40px 50px;">
-                     <div id="icondiv"><img id="imgdesc" src=${iconUrl}>
-                      </div>
-                    <ul class="currentinfo>
-                        <li class="weatherinfo">Degree: ${temp}</li>
-                        <li class="weatherinfo">Weather: ${description}</li>
-                    </ul>
-             </div>
-        </div>
-    </div>`;
+        parent.innerHTML = `
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                            <span class="info">${place}</span>
+                                            <span class="close">&times;</span>
+                                        </div>
+                                        <div class="modal-body" style="padding:40px 50px;">
+                                                <div id="icondiv"><img id="imgdesc" src=${iconUrl}>
+                                                </div>
+                                                <ul class="currentinfo">
+                                                    <li class="weatherinfo">Degree: ${temp}</li>
+                                                    <li class="weatherinfo">Weather: ${description}</li>
+                                                </ul>
+                                        </div>
+                       
+                              </div>     
+                `;
       });
-  };
-
-  likeimage.addEventListener('click', () => {
-    alert('liked');
   });
 });
+span.addEventListener('click', () => {
+  parent.style.display = 'none';
+});
+// eslint-disable-next-line no-multi-assign
+window.onclick = (e) => {
+  if (e.target === parent) {
+    parent.style.display = 'none';
+  }
+};
