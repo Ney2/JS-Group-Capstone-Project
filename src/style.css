@@ -17,6 +17,12 @@ header {
   border: 2px solid #ccc;
 }
 
+.btn {
+ border: 0;
+ color: #fff;
+ padding: 5px 10px;
+}
+
 #weather-card {
   display: flex;
   justify-content: center;
@@ -28,7 +34,7 @@ header {
 #city-weather {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 200px;
   height: 200px;
@@ -43,6 +49,7 @@ header {
 
 .info {
   font-weight: 700;
+  margin: 4px 10px;
 }
 
 .currentinfo {
@@ -57,6 +64,12 @@ header {
   align-items: center;
 }
 
+.likeimg {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
 .main-content {
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -65,13 +78,29 @@ header {
 }
 
 #imgdesc {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
+}
+
+.city-weather .likediv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .desc {
   display: flex;
 }
+
+.modal-header, h4, .close {
+    background-color: #5cb85c;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
 
 .searchContainer {
   display: flex;
