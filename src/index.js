@@ -5,7 +5,7 @@ import './style.css';
 import displayLocalWeather from './modules/displayData.js';
 import otherCitiesWeather from './modules/citiesWeather.js';
 
-const cities = ['Madrid', 'Addis Ababa', 'Delhi', 'Washington', 'London'];
+const cities = ['Madrid', 'Addis Ababa', 'Delhi', 'Washington', 'London', 'Berlin', 'Sydeny', 'Warsaw', 'Tokyo', 'Arendal'];
 const search = document.querySelector('#search');
 const apiKey = '54a6527497256dd9bae8275602a3260a';
 const parent = document.getElementById('myModal');
