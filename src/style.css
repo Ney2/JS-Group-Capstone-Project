@@ -82,7 +82,11 @@ header {
 
 .searchBar {
   width: 80%;
-  padding: 5px;
+  padding: 5px 20px;
+}
+
+#searchIcon {
+    cursor: pointer;
 }
 
 .searchContainer h2 {
