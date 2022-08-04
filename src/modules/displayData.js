@@ -1,5 +1,5 @@
 const apiKey = '54a6527497256dd9bae8275602a3260a';
-const displayData = async () => {
+const displayLocalWeather = async () => {
   let lat;
   let lon;
   if (navigator.geolocation) {
@@ -14,37 +14,22 @@ const displayData = async () => {
           const place = data.name;
           const { description, icon } = data.weather[0];
           const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-          const fahrenheit = (temp * 9) / 5 + 32;
+          // const fahrenheit = (temp * 9) / 5 + 32;
           const container = document.getElementById('weather-card');
-          container.innerHTML = `<div><img id="imgdesc" src=${iconUrl}></div> `;
-          const titlediv = document.createElement('div');
-          titlediv.setAttribute('class', 'desc');
+          container.innerHTML = `<div id="icondiv"><img id="imgdesc" src=${iconUrl}></div> `;
           const desc = document.createElement('span');
           desc.setAttribute('class', 'info');
           desc.innerHTML = place;
-          titlediv.append(desc);
-          const imglike = document.createElement('img');
-          imglike.setAttribute('class', 'hearticon');
-          titlediv.append(imglike);
-          container.append(titlediv);
-          const weatherdiv = document.createElement('div');
-          weatherdiv.setAttribute('class', 'weatherdata');
+          const icondiv = document.getElementById('icondiv');
+          icondiv.append(desc);
           const list = document.createElement('ul');
+          list.setAttribute('class', 'currentinfo');
           list.innerHTML = `<li class="weatherinfo">Degree: ${temp}</li>
-                            <li class="weatherinfo">Fahrenheit: ${fahrenheit}</li>
-                            <li class="weatherinfo">Weather: ${description}</li>
-                           
-                            
-                            
-          `;
-          weatherdiv.append(list);
-          const button1 = document.createElement('button');
-          button1.setAttribute('id', 'comments');
-          weatherdiv.append(button1);
-          container.append(weatherdiv);
+                            <li class="weatherinfo">Weather: ${description}</li> `;
+          container.append(list);
         });
     });
   }
 };
 
-export default displayData;
+export default displayLocalWeather;
