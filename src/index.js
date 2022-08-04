@@ -1,13 +1,8 @@
-/* eslint-disable prefer-const */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 import _ from 'lodash';
 import './style.css';
-
-const apiKey = '54a6527497256dd9bae8275602a3260a';
-let apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid=${apiKey}`;
+import displayData from './modules/displayData.js';
 
 window.addEventListener('load', () => {
-
+  displayData();
 });
-

@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  margin: 10px 0;
+}
+
+#container {
+  max-width: 960px;
+  height: auto;
+  margin: 0 auto;
+  border: 2px solid #ccc;
+}
+
+#weather-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: auto;
+  border: 2px solid #000;
+}
+
+.weatherinfo {
+  list-style: none;
+  margin: 10px;
+}
+
+.main-content {
+  margin: 10px;
+}
+
+#imgdesc {
+  width: 100%;
+  height: auto;
+}
+
+.desc {
+  display: flex;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.searchBar {
+  margin-top: 10%;
+}
+
+.searchContainer h2 {
+  border: 1px solid black;
+  border-radius: 10%;
+}
+
+.footerContainer {
+  text-align: center;
+  margin-top: 40%;
+}
