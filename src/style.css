@@ -5,6 +5,8 @@
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
   max-width: 960px;
   margin: 0 auto;
   padding: 0;
@@ -39,6 +41,7 @@ header {
   align-items: center;
   width: auto;
   height: auto;
+  margin-left: auto;
 }
 
 #city-weather {
@@ -144,11 +147,12 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0;
+  
 }
 
 .formsection {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -162,14 +166,60 @@ header {
   cursor: pointer;
 }
 
-.searchContainer h2 {
-  border: 1px solid black;
+.searchContainer h2, form {
   border-radius: 10%;
   padding: 0;
-  margin: 0;
+  margin: 0  2rem;
 }
 
 .footerContainer {
   text-align: center;
   margin-top: 40%;
+  box-shadow: 1px 1px 1px 1px #ccc;
+}
+
+@media (max-width: 500px) {
+
+    header {
+        width: 100%;
+    }
+       .searchContainer {
+        width: 100%;
+        flex-direction: column;
+        
+    }
+
+    .searchContainer > h2 {
+        margin: 10px 0;
+        order: 0;
+    }
+
+    .formsection  {
+      flex-direction: column;
+      justify-content: space-around;
+      order: 2;
+    }
+
+    .formsection >  #cityname, #search {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .main-content {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #city-weather {
+        width: 90%;
+        height: auto;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #weather-card {
+        order: 1;
+    }
+
+    #city-weather > button {
+        margin: 1rem 0.5rem;
+    }
 }
