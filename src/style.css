@@ -17,10 +17,10 @@ header {
   border: 2px solid #ccc;
 }
 
-.btn {
- border: 0;
- color: #fff;
- padding: 5px 10px;
+#btn {
+  border: 0;
+  color: #fff;
+  padding: 5px 10px;
 }
 
 #weather-card {
@@ -65,9 +65,9 @@ header {
 }
 
 .likeimg {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .main-content {
@@ -83,24 +83,27 @@ header {
 }
 
 .city-weather .likediv {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .desc {
   display: flex;
 }
 
-.modal-header, h4, .close {
-    background-color: #5cb85c;
-    color:white !important;
-    text-align: center;
-    font-size: 30px;
-  }
-  .modal-footer {
-    background-color: #f9f9f9;
-  }
+.modal-header,
+h4,
+.close {
+  background-color: #5cb85c;
+  color: white !important;
+  text-align: center;
+  font-size: 30px;
+}
+
+.modal-footer {
+  background-color: #f9f9f9;
+}
 
 .searchContainer {
   display: flex;
@@ -115,7 +118,7 @@ header {
 }
 
 #searchIcon {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .searchContainer h2 {
