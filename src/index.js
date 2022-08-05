@@ -12,20 +12,9 @@ const apiKey = '54a6527497256dd9bae8275602a3260a';
 const parent = document.getElementById('myModal');
 const likeimage = document.getElementById('likeimg');
 const span = document.getElementsByClassName('close')[0];
-const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
 // eslint-disable-next-line no-var
 
 window.addEventListener('load', async () => {
-  const Key = fetch(likesUrl, {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
-
   displayLocalWeather();
   cities.forEach((cityName) => {
     otherCitiesWeather(cityName);
