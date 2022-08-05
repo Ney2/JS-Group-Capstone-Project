@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable prefer-const */
 /* eslint-disable no-unused-vars */
 import img from '../images/heart.png';
@@ -7,10 +8,18 @@ const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capston
 let nolikes;
 const parent = document.getElementById('main-content');
 
+const getLikes = async (likesUrl) => {
+  await fetch(likesUrl)
+    .then((result) => result.json())
+    .then((json) => {
+      const itemLike = json.find((item) => item.item_id === id);
+      document.getElementById('like').innerHTML = itemLike.likes;
+    });
+};
+
+getLikes();
+
 const otherCitiesWeather = async (city) => {
-  const response = () => fetch(likesUrl)
-    .then((result) => result.json());
-  nolikes = await response();
   const container = document.createElement('div');
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   await fetch(apiUrl)
@@ -27,8 +36,8 @@ const otherCitiesWeather = async (city) => {
       const titlediv = document.createElement('div');
       titlediv.setAttribute('class', 'likediv');
       titlediv.innerHTML = `<span class="info">  ${place}</span>;
-                            <img src=${img} class="likeimg" onclick ="addLikes()" id="likeimg">
-                            <div class="likes" id="likes"><span class="like"></span>${nolikes.likes} Likes</div>`;
+                            <img src=${img} class="likeimg"  id="likeimg">
+                            <div class="likes" id="likes"><span class="like" id="like"></span></div>`;
       container.append(titlediv);
       const list = document.createElement('ul');
       list.setAttribute('class', 'currentinfo');
@@ -38,22 +47,22 @@ const otherCitiesWeather = async (city) => {
       container.innerHTML += '<button type="button" class="bg-success btn">Comment</button>';
     });
   parent.append(container);
-};
-
-window.addLikes = async () => {
-  await fetch(likesUrl, {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-    body: JSON.stringify({
-      item_id: Math.floor(Math.random(1) * 100),
-    }),
-  })
-    .then((response) => response.text())
-    .then((json) => {
-      alert(json);
-    });
+  const heartBtn = document.getElementById('likeimg');
+  heartBtn.addEventListener('click', async (e) => {
+    const noOfLikes = await fetch(likesUrl, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: Math.floor(Math.random(1) * 1000),
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((response) => {
+      getLikes(likesUrl);
+      return response.json();
+    })
+      .catch((err) => err);
+  });
 };
 
 export default otherCitiesWeather;

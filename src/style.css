@@ -105,6 +105,10 @@ header {
   display: flex;
 }
 
+#entries {
+  color: #198754;
+}
+
 .modal {
   display: none;
   position: fixed;

@@ -19,6 +19,9 @@ window.addEventListener('load', async () => {
   cities.forEach((cityName) => {
     otherCitiesWeather(cityName);
   });
+  const count = document.getElementById('entries');
+  count.innerHTML = '&nbsp;&nbsp;(';
+  count.innerHTML += `${cities.length})`;
   search.addEventListener('click', (e) => {
     const cityName = document.getElementById('cityname').value;
     parent.style.display = 'block';
