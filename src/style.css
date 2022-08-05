@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -173,8 +175,10 @@ form {
 }
 
 .footerContainer {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
   text-align: center;
-  margin-top: 40%;
+  margin-top: 5%;
   box-shadow: 1px 1px 1px 1px #ccc;
 }
 
@@ -223,4 +227,28 @@ form {
   #city-weather > button {
     margin: 1rem 0.5rem;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.popupContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.country,
+.temperature,
+.pressure {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+}
+
+.close-button {
+  align-self: flex-end;
+  padding: 2%;
 }
