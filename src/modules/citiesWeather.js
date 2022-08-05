@@ -2,22 +2,17 @@
 /* eslint-disable prefer-const */
 /* eslint-disable no-unused-vars */
 import img from '../images/heart.png';
+import popUp from './commentPopup.js';
 
 const apiKey = '54a6527497256dd9bae8275602a3260a';
 const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/cuyuahQqhc46iVj8wwV2/likes';
 let nolikes;
 const parent = document.getElementById('main-content');
-
-const getLikes = async (likesUrl) => {
-  await fetch(likesUrl)
-    .then((result) => result.json())
-    .then((json) => {
-      const itemLike = json.find((item) => item.item_id === id);
-      document.getElementById('like').innerHTML = itemLike.likes;
-    });
-};
-
-getLikes();
+const btn = document.getElementsByClassName('btn');
+const popInfo = document.querySelector('.popUp');
+const header = document.querySelector('.searchContainer');
+const main = document.querySelector('.main-content');
+const footer = document.querySelector('.footerContainer');
 
 const otherCitiesWeather = async (city) => {
   const container = document.createElement('div');
@@ -44,7 +39,7 @@ const otherCitiesWeather = async (city) => {
       list.innerHTML += `   <li class="weatherinfo">Degree: ${temp}</li>
                             <li class="weatherinfo">Weather: ${description}</li> `;
       container.append(list);
-      container.innerHTML += '<button type="button" class="bg-success btn">Comment</button>';
+      container.innerHTML += `<button type="button" id=${data.name} class="bg-success btn">Comment</button>`;
     });
   parent.append(container);
   const heartBtn = document.getElementById('likeimg');
@@ -62,7 +57,20 @@ const otherCitiesWeather = async (city) => {
       return response.json();
     })
       .catch((err) => err);
-  });
+  })
+
+  for (let i = 0; i < btn.length; i += 1) {
+    btn[i].addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = btn[i].getAttribute('id');
+      popUp(id);
+      header.classList.add('hidden');
+      main.classList.add('hidden');
+      footer.classList.add('hidden');
+      popInfo.classList.remove('hidden');
+    });
+  }
+
 };
 
 export default otherCitiesWeather;
