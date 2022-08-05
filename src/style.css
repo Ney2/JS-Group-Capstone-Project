@@ -260,12 +260,12 @@ form {
 
 #commentList li p {
   font-family: 'Roboto', sans-serif;
-  font-size: bold;
+  font-weight: bold;
 }
 
 .entered-comment {
   font-family: 'Roboto', sans-serif;
-  font-size: bold;
+  font-weight: bold;
 }
 
 .comment-form {
@@ -294,5 +294,3 @@ textarea:focus {
   outline: none !important;
   box-shadow: 0 0 10px #6d8347;
 }
-
-
