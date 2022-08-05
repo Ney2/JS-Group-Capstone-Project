@@ -51,9 +51,6 @@ window.addEventListener('load', async () => {
       });
   });
 });
-span.addEventListener('click', () => {
-  parent.style.display = 'none';
-});
 // eslint-disable-next-line no-multi-assign
 window.onclick = (e) => {
   if (e.target === parent) {

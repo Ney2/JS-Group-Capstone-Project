@@ -1,23 +1,16 @@
+/* eslint-disable prefer-const */
+/* eslint-disable no-unused-vars */
 import img from '../images/heart.png';
 
 const apiKey = '54a6527497256dd9bae8275602a3260a';
-const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/Skfyuf986zxEvyZEl6hT';
+const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/cuyuahQqhc46iVj8wwV2/likes';
+let nolikes;
 const parent = document.getElementById('main-content');
-const likes = document.getElementById('likeimg');
-likes.addEventListener('click', (e) => {
-  fetch(likesUrl, {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-    body: JSON.stringify({
-      item_id: e.target.id,
-    }),
-  })
-    .then((response) => response.text())
-    .then((json) => json);
-});
+
 const otherCitiesWeather = async (city) => {
+  const response = () => fetch(likesUrl)
+    .then((result) => result.json());
+  nolikes = await response();
   const container = document.createElement('div');
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   await fetch(apiUrl)
@@ -34,7 +27,8 @@ const otherCitiesWeather = async (city) => {
       const titlediv = document.createElement('div');
       titlediv.setAttribute('class', 'likediv');
       titlediv.innerHTML = `<span class="info">  ${place}</span>;
-                            <img src=${img} class="likeimg"  id="likeimg"> `;
+                            <img src=${img} class="likeimg" onclick ="addLikes()" id="likeimg">
+                            <div class="likes" id="likes"><span class="like"></span>${nolikes.likes} Likes</div>`;
       container.append(titlediv);
       const list = document.createElement('ul');
       list.setAttribute('class', 'currentinfo');
@@ -45,4 +39,21 @@ const otherCitiesWeather = async (city) => {
     });
   parent.append(container);
 };
+
+window.addLikes = async () => {
+  await fetch(likesUrl, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+    body: JSON.stringify({
+      item_id: Math.floor(Math.random(1) * 100),
+    }),
+  })
+    .then((response) => response.text())
+    .then((json) => {
+      alert(json);
+    });
+};
+
 export default otherCitiesWeather;
