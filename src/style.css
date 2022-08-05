@@ -244,11 +244,53 @@ form {
 .pressure {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
 }
 
 .close-button {
   align-self: flex-end;
   padding: 2%;
+}
+
+#commentList {
+  list-style-type: none;
+}
+
+#commentList li p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.entered-comment {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+}
+
+#submit {
+  border: 1px solid #6d8347;
+  background-color: #6d8347;
+  color: #fff;
+  padding: 0.5rem 2rem;
+}
+
+#submit,
+#userName,
+#userComment {
+  border: 1px solid #6d8347;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none !important;
+  box-shadow: 0 0 10px #6d8347;
 }
