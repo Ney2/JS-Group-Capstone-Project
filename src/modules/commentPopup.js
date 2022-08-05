@@ -1,4 +1,5 @@
 import cimg from '../images/close.png';
+import postComment from './commentAPI.js';
 
 const apiKey = '54a6527497256dd9bae8275602a3260a';
 const popInfo = document.querySelector('.popUp');
@@ -38,9 +39,26 @@ const popUp = async (id) => {
         <p>Humidity: ${data.main.humidity}</p>
         </p>
         </div>
+
+        <div class="comments-container">
+        <h2>Comments <span id="recieved-comments">0</span></h2>
+        <ul id="commentList">
+        </ul>
+        </div>
+
+        <div class="comment-form">
+        <h2>Add Comment</h2>
+        <form action="POST" class="form">
+        <input name="name" id="userName" placeholder="Your Name" required> <br>
+        <textarea name="comment" id="userComment" placeholder="Your Insight" required rows="5" cols="20"></textarea> <br>
+        <button id="submit" data=${data.name} type="submit">Submit</button>
+        </form>
+        </div>
+        </div>
         </div>
        `;
       }
+      postComment();
     });
 
   const close = document.querySelector('.close-button');
