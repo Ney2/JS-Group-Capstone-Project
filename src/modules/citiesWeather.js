@@ -44,7 +44,7 @@ const otherCitiesWeather = async (city) => {
          <ul class="'currentinfo'">
               <li class="weatherinfo">Degree: ${temp}</li>
               <li class="weatherinfo">Weather: ${description}</li> 
-              <li class="likes-item"><span class= "likes-qty" data="${data.name}">0</span> likes</li>
+              <li class="likes-item"><span class= "likes-qty" id="likes-qty" data="${data.name}">0</span> likes</li>
           </ul>
           
           <button type="button" id=${data.name} class="bg-success btn">Comment</button>
