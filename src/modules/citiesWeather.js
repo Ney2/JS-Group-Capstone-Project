@@ -50,43 +50,24 @@ const otherCitiesWeather = async (city) => {
       container.innerHTML += `<button type="button" id=${data.name} class="bg-success btn">Comment</button>`;
     });
   parent.append(container);
-  const heartBtn = document.querySelector('.likeimg');
-  heartBtn.addEventListener('click', async (e) => {
-    e.stopPropagation();
-    const response = await fetch(likesUrl, {
-      method: 'POST',
-      body: JSON.stringify({
-        item_id: Math.floor(Math.random(1) * 1000),
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-<<<<<<< HEAD
-    }).then((response) => {
-      getLikes(likesUrl);
-      return response.json();
-    })
-      .catch((err) => err);
-  })
-
-  for (let i = 0; i < btn.length; i += 1) {
-    btn[i].addEventListener('click', (e) => {
-      e.preventDefault();
-      const id = btn[i].getAttribute('id');
-      popUp(id);
-      header.classList.add('hidden');
-      main.classList.add('hidden');
-      footer.classList.add('hidden');
-      popInfo.classList.remove('hidden');
+  const heartBtn = document.getElementsByClassName('likeimg');
+  for (let i = 0; i < heartBtn.length; i += 1) {
+    heartBtn[i].addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const response = await fetch(likesUrl, {
+        method: 'POST',
+        body: JSON.stringify({
+          item_id: Math.floor(Math.random(1) * 1000),
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((response) => {
+        getLikes(likesUrl);
+        window.location.reload();
+        return response.text();
+      });
     });
   }
-
-=======
-    });
-    window.location.reload();
-    return response.text();
-  });
->>>>>>> e6fa367 (updated js code for recording likes and displaying likes)
 };
-
 export default otherCitiesWeather;
