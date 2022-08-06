@@ -6,14 +6,22 @@ import popUp from './commentPopup.js';
 
 const apiKey = '54a6527497256dd9bae8275602a3260a';
 const likesUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/cuyuahQqhc46iVj8wwV2/likes';
-let nolikes;
 const parent = document.getElementById('main-content');
 const btn = document.getElementsByClassName('btn');
 const popInfo = document.querySelector('.popUp');
 const header = document.querySelector('.searchContainer');
 const main = document.querySelector('.main-content');
 const footer = document.querySelector('.footerContainer');
-
+let nolikes = 0;
+const getLikes = async () => {
+  await fetch(likesUrl)
+    .then((result) => result.json())
+    .then((data) => {
+      nolikes = data.length;
+    });
+  return nolikes;
+};
+nolikes = getLikes();
 const otherCitiesWeather = async (city) => {
   const container = document.createElement('div');
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -32,7 +40,7 @@ const otherCitiesWeather = async (city) => {
       titlediv.setAttribute('class', 'likediv');
       titlediv.innerHTML = `<span class="info">  ${place}</span>;
                             <img src=${img} class="likeimg"  id="likeimg">
-                            <div class="likes" id="likes"><span class="like" id="like"></span></div>`;
+                            <div class="likes" id="likes"><span class="like" id="like">${nolikes} likes</span></div>`;
       container.append(titlediv);
       const list = document.createElement('ul');
       list.setAttribute('class', 'currentinfo');
@@ -42,9 +50,10 @@ const otherCitiesWeather = async (city) => {
       container.innerHTML += `<button type="button" id=${data.name} class="bg-success btn">Comment</button>`;
     });
   parent.append(container);
-  const heartBtn = document.getElementById('likeimg');
+  const heartBtn = document.querySelector('.likeimg');
   heartBtn.addEventListener('click', async (e) => {
-    const noOfLikes = await fetch(likesUrl, {
+    e.stopPropagation();
+    const response = await fetch(likesUrl, {
       method: 'POST',
       body: JSON.stringify({
         item_id: Math.floor(Math.random(1) * 1000),
@@ -52,6 +61,7 @@ const otherCitiesWeather = async (city) => {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
+<<<<<<< HEAD
     }).then((response) => {
       getLikes(likesUrl);
       return response.json();
@@ -71,6 +81,12 @@ const otherCitiesWeather = async (city) => {
     });
   }
 
+=======
+    });
+    window.location.reload();
+    return response.text();
+  });
+>>>>>>> e6fa367 (updated js code for recording likes and displaying likes)
 };
 
 export default otherCitiesWeather;
