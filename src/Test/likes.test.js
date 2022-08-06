@@ -3,7 +3,7 @@
  * @jest-environment jsdom
  */
 
- import { apiMock2, countertests } from '../_mocks_/like.js';
+ import { apiMock2, countertests } from '../_mocks_/likes.js';
 
  describe('Add a new city', () => {
    test('Add a new city', () => {
