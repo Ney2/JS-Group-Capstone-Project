@@ -31,9 +31,9 @@ Any kind of browser and code editor.
 
 # Author 1
 
-- GitHub: 
-- Twitter: 
-- LinkedIn: 
+- GitHub: [@Riyaz](https://github.com/r-ahmed2022)
+- Twitter:[@Riyaz] (https://github.com/r-ahmed2022)
+- LinkedIn:[@Riyaz](https://github.com/r-ahmed2022)
 # Author 2
 
 - GitHub: [@Ney2](https://github.com/Ney2)
