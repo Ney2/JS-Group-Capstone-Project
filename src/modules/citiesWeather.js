@@ -34,7 +34,7 @@ const otherCitiesWeather = async (city) => {
       const { description, icon } = data.weather[0];
       const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
       // const fahrenheit = (temp * 9) / 5 + 32;
-      container.setAttribute('class', 'city-weather' )
+      container.setAttribute('class', 'city-weather');
       container.innerHTML = ` 
                    <div id="icondiv"><img id="imgdesc" src=${iconUrl}></div>
                     <div class="likediv">
@@ -50,36 +50,33 @@ const otherCitiesWeather = async (city) => {
           <button type="button" id=${data.name} class="bg-success btn">Comment</button>
         </div>
       </div> `;
-        parent.appendChild(container);
-
-      
+      parent.appendChild(container);
     });
-    for (let i = 0; i < btn.length; i += 1) {
-      btn[i].addEventListener('click', (e) => {
-        e.preventDefault();
-        const id = btn[i].getAttribute('id');
-        popUp(id);
-        header.classList.add('hidden');
-        main.classList.add('hidden');
-        footer.classList.add('hidden');
-        popInfo.classList.remove('hidden');
+  for (let i = 0; i < btn.length; i += 1) {
+    btn[i].addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = btn[i].getAttribute('id');
+      popUp(id);
+      header.classList.add('hidden');
+      main.classList.add('hidden');
+      footer.classList.add('hidden');
+      popInfo.classList.remove('hidden');
+    });
+  }
+
+  const like = () => {
+    const likebtns = document.getElementsByClassName('likeimg');
+    const likebtnsarray = Array.from(likebtns);
+    likebtnsarray.forEach((element) => {
+      const likeId = element.getAttribute('data');
+      element.addEventListener('click', () => {
+        element.classList.add('heart-active');
+        likeapi(likeId);
       });
-    }
-  
-    const like = () => {
-      const likebtns = document.getElementsByClassName('likeimg');
-      const likebtnsarray = Array.from(likebtns);
-      likebtnsarray.forEach((element) => {
-        const likeId = element.getAttribute('data');
-        element.addEventListener('click', () => {
-          element.classList.add('heart-active');
-          likeapi(likeId);
-        });
-      });
-    };
-    
-    setTimeout(() => like(), 1000);
-    Displaylikes();
-  
+    });
+  };
+
+  setTimeout(() => like(), 1000);
+  Displaylikes();
 };
 export default otherCitiesWeather;
