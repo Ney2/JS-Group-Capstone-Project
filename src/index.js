@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import _ from 'lodash';
@@ -5,7 +6,7 @@ import './style.css';
 import displayLocalWeather from './modules/displayData.js';
 import otherCitiesWeather from './modules/citiesWeather.js';
 
-const cities = ['Madrid', 'Addis Ababa', 'Delhi', 'Washington', 'London', 'Berlin', 'Sydeny', 'Warsaw', 'Tokyo', 'Arendal'];
+const cities = ['Madrid', 'Addis Ababa', 'Delhi', 'Washington', 'London', 'Berlin', 'Sydney', 'Warsaw', 'Tokyo', 'Arendal'];
 const search = document.querySelector('#search');
 const apiKey = '54a6527497256dd9bae8275602a3260a';
 const parent = document.getElementById('myModal');
@@ -13,11 +14,14 @@ const likeimage = document.getElementById('likeimg');
 const span = document.getElementsByClassName('close')[0];
 // eslint-disable-next-line no-var
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
   displayLocalWeather();
   cities.forEach((cityName) => {
     otherCitiesWeather(cityName);
   });
+  const count = document.getElementById('entries');
+  count.innerHTML = '&nbsp;&nbsp;(';
+  count.innerHTML += `${cities.length})`;
   search.addEventListener('click', (e) => {
     const cityName = document.getElementById('cityname').value;
     parent.style.display = 'block';
@@ -49,9 +53,6 @@ window.addEventListener('load', () => {
                 `;
       });
   });
-});
-span.addEventListener('click', () => {
-  parent.style.display = 'none';
 });
 // eslint-disable-next-line no-multi-assign
 window.onclick = (e) => {
