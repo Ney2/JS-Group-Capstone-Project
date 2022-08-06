@@ -32,7 +32,7 @@ Any kind of browser and code editor.
 # Author 1
 
 - GitHub: [@Riyaz](https://github.com/r-ahmed2022)
-- Twitter:[@Riyaz] (https://github.com/r-ahmed2022)
+- Twitter:[@Riyaz](https://github.com/r-ahmed2022)
 - LinkedIn:[@Riyaz](https://github.com/r-ahmed2022)
 # Author 2
 
