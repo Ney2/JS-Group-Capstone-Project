@@ -13,7 +13,7 @@ It is built with the help of an open weather api and involvement api provided by
 # Live Link Demo
 
 - Record Video: [Vedio](https://drive.google.com/file/d/19Oy5JZmWl7kgkqNWDEzw-VNTm8o2Eweb/view?usp=sharing)
-- Live Demo: Weather [App](https://musical-marigold-e8b954.netlify.app/)
+- Live Demo: [Weather App](https://musical-marigold-e8b954.netlify.app/)
 # Getting Started
 
 To get a local copy up and running follow these simple example steps.
