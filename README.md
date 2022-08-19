@@ -41,7 +41,7 @@ Any kind of browser and code editor.
 - LinkedIn: [@KidistDinku](https://www.linkedin.com/in/kidist-guta-014025183/)
 # 🤝 Contributing
 
-Contributions, issues[https://github.com/Ney2/JS-Group-Capstone-Project/issues], and feature requests are welcome!
+Contributions, (issues)[https://github.com/Ney2/JS-Group-Capstone-Project/issues], and feature requests are welcome!
 
 # Show your support
 
